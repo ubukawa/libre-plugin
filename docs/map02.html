@@ -1,10 +1,15 @@
 <html>
 <head>
 <meta charset='utf-8' />
-<title>Map01</title>
+<title>Map02 - Added export function </title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src="maplibre-gl@2.4.0/maplibre-gl.js"></script>
 <link href="maplibre-gl@2.4.0/maplibre-gl.css" rel="stylesheet" />
+<!-- for MapLibre export (from here)-->
+<link href='https://watergis.github.io/maplibre-gl-export/maplibre-gl-export.css' rel='stylesheet' />
+<script src="https://watergis.github.io/maplibre-gl-export/maplibre-gl-export.js"></script>
+<!-- for MapLibre export (until here)-->
+
 
 <style>
 body { margin:0; padding:0; }
@@ -44,6 +49,17 @@ map.addControl(new maplibregl.TerrainControl({
 //debug
 map.showTileBoundaries = true;
 map.showCollisionBoxes = false;
+
+//maplibre export (https://github.com/watergis/maplibre-gl-export)
+map.addControl(new watergis.MaplibreExportControl({
+  PageSize: watergis.Size.A4,
+  PageOrientation: watergis.PageOrientation.Portrait,
+  Format: watergis.Format.PNG,
+  DPI: watergis.DPI[96],
+  //Crosshair: true,
+  PrintableArea: true,
+  Local: 'en'
+}), 'top-right');
 
 </script>
  
