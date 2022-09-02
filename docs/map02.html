@@ -51,11 +51,11 @@ map.showTileBoundaries = true;
 map.showCollisionBoxes = false;
 
 //maplibre export (https://github.com/watergis/maplibre-gl-export)
-map.addControl(new watergis.MaplibreExportControl({
-  PageSize: watergis.Size.A4,
-  PageOrientation: watergis.PageOrientation.Portrait,
-  Format: watergis.Format.PNG,
-  DPI: watergis.DPI[96],
+map.addControl(new MaplibreExportControl({
+  PageSize: Size.A4,
+  PageOrientation: PageOrientation.Portrait,
+  Format: Format.PNG,
+  DPI: DPI[96],
   //Crosshair: true,
   PrintableArea: true,
   Local: 'en'
