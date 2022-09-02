@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta charset='utf-8' />
+<title>Map02 - Added an export function (maplibre-gl-export@1.3.6) </title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src="maplibre-gl@2.4.0/maplibre-gl.js"></script>
+<link href="maplibre-gl@2.4.0/maplibre-gl.css" rel="stylesheet" />
+<link href='https://watergis.github.io/maplibre-gl-export/maplibre-gl-export.css' rel='stylesheet' />
+<script src="https://watergis.github.io/maplibre-gl-export/maplibre-gl-export.js"></script>
+<!-- for MapLibre export (In a case you download the files into the local)
+<link href='maplibre-gl-export@1.3.6/maplibre-gl-export.css' rel='stylesheet' />
+<script src="maplibre-gl-export@1.3.6/maplibre-gl-export.js"></script>
+-->
+
+<style>
+body { margin:0; padding:0; }
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+</style>
+</head>
+<body>
+ 
+<div id='map'></div>
+<div id="menu">
+  <input id="std.json" type="radio" name="r" checked="checked" />
+  <label>std</label>
+  <input id="std-photo.json" type="radio" name="r" />
+  <label>With photo</label>
+</div>
+
+<script>
+var map = new maplibregl.Map({
+  container: 'map', 
+  hash: true, 
+  style: 'std.json', // style file path
+  center: [134.55894,33.95213], // center 
+  zoom: 7, // zoom level at loading
+  maxZoom: 0, // min zoom
+  maxZoom: 15, // max zoom
+  maxPitch: 85
+});
+
+
+//UI
+map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+map.addControl(new maplibregl.ScaleControl() );
+map.addControl(new maplibregl.TerrainControl({
+  source: "terrainSource",
+  exaggeration: 1
+}) );
+
+//debug
+//map.showTileBoundaries = true;
+map.showCollisionBoxes = false;
+
+//maplibre export (https://github.com/watergis/maplibre-gl-export)
+map.addControl(new MaplibreExportControl({
+  PageSize: Size.A4,
+  PageOrientation: PageOrientation.Portrait,
+  Format: Format.PNG,
+  DPI: DPI[96],
+  //Crosshair: true,
+  PrintableArea: true,
+  Local: 'en'
+}), 'top-right');
+
+</script>
+ 
+</body>
+</html>
