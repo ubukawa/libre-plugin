@@ -204,7 +204,8 @@ const targets = {
   'hills': 'Hillshade',
 };
 
-map.addControl(new MaplibreLegendControl(targets, {
+map.addControl(new MaplibreLegendControl({}, {
+//map.addControl(new MaplibreLegendControl(targets, {
   showDefault: false, 
   showCheckbox: true, 
   onlyRendered: true,
